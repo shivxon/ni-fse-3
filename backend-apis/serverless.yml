@@ -1,0 +1,33 @@
+service: nexxt-apis
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+functions:
+  create-user:
+    handler: create-user.handler
+    events:
+      - httpApi:
+          path: /create-user
+          method: post
+  user-list:
+    handler: user-list.handler
+    events:
+      - httpApi:
+          path: /user-list
+          method: get
+  user-details:
+    handler: user-details.handler
+    events:
+      - httpApi:
+          path: /user-details/:id
+          method: get
+  user-update:
+    handler: user-update.handler
+    events:
+      - httpApi:
+          path: /user-update/:id
+          method: patch
