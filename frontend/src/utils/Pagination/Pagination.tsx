@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo } from "react";
 import styles from "./Pagination.module.css";
+import Button from 'react-bootstrap/Button';
 
 type PAGINATION_PROPS = {
   page?: number;
@@ -7,8 +8,8 @@ type PAGINATION_PROPS = {
   totalPages?: number;
 };
 
-const Pagination = (props: PAGINATION_PROPS) => {
-  const { page = 1, setPage = () => {}, totalPages = 1 } = props;
+const PaginationControl = (props: PAGINATION_PROPS) => {
+  const { page = 1, setPage = () => { }, totalPages = 1 } = props;
 
   const [firstPage, ...remainingPages] =
     useMemo(
@@ -30,6 +31,7 @@ const Pagination = (props: PAGINATION_PROPS) => {
     >
       {firstPage < page && (
         <button
+          className={styles.buttonProperties}
           onClick={() => {
             handlePageClick(page - 1);
           }}
@@ -40,6 +42,7 @@ const Pagination = (props: PAGINATION_PROPS) => {
 
       {firstPage < page - 1 && (
         <button
+          className={styles.buttonProperties}
           onClick={() => {
             handlePageClick(firstPage);
           }}
@@ -49,13 +52,17 @@ const Pagination = (props: PAGINATION_PROPS) => {
       )}
 
       {firstPage + 1 < page - 1 && (
-        <button>
+        <button
+          className={styles.buttonProperties}
+        >
+
           <a onClick={(e: any) => e.preventDefault()}>....</a>
         </button>
       )}
 
       {page - 1 > 0 && (
         <button
+          className={styles.buttonProperties}
           onClick={() => {
             handlePageClick(page - 1);
           }}
@@ -65,7 +72,8 @@ const Pagination = (props: PAGINATION_PROPS) => {
       )}
 
       <button
-        className={styles.active}
+
+        className={`${styles.active} ${styles.buttonProperties}`}
         onClick={() => {
           handlePageClick(page);
         }}
@@ -75,6 +83,7 @@ const Pagination = (props: PAGINATION_PROPS) => {
 
       {page + 1 < lastPage + 1 && (
         <button
+          className={styles.buttonProperties}
           onClick={() => {
             handlePageClick(page + 1);
           }}
@@ -84,13 +93,16 @@ const Pagination = (props: PAGINATION_PROPS) => {
       )}
 
       {lastPage - 1 > page + 1 && (
-        <button>
+        <button
+          className={styles.buttonProperties}
+        >
           <a onClick={(e: any) => e.preventDefault()}>....</a>
         </button>
       )}
 
       {lastPage > page + 1 && (
         <button
+          className={styles.buttonProperties}
           onClick={() => {
             handlePageClick(lastPage);
           }}
@@ -101,6 +113,7 @@ const Pagination = (props: PAGINATION_PROPS) => {
 
       {page < lastPage && (
         <button
+          className={styles.buttonProperties}
           onClick={() => {
             handlePageClick(page + 1);
           }}
@@ -112,4 +125,4 @@ const Pagination = (props: PAGINATION_PROPS) => {
   );
 };
 
-export default Pagination;
+export default PaginationControl;
