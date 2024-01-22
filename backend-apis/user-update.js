@@ -13,8 +13,10 @@ exports.handler = async (event, context) => {
     }
     const userData = await userModal.findOne({ _id: userId })
     if (userData) {
-        if (userData?.phone && userData?.phone == phone) {
-            return response = {
+        if (userData?.phone && !(userData?.phone == phone)) {
+          let  phoneAlreadyExists = await userModal.findOne({ phone})
+            if(phoneAlreadyExists) 
+            {return response = {
                 statusCode: 400,
                 headers: {
                     "Access-Control-Allow-Origin": "*", // Required for CORS support to work
@@ -22,20 +24,19 @@ exports.handler = async (event, context) => {
                 },
                 data: {},
                 message: 'Phone number already used.'
-            };
+            }
+                
+            }
         }
-        userData.phone == phone
-        userData.firstName = firstName
-        userData.lastName = lastName
-        await userModal.save();
 
+    const updatedValues  =  await userModal.findOneAndUpdate({ _id: userId }, {$set :{phone,firstName,lastName}}, {upsert : true})
         response = {
             statusCode: 200,
             headers: {
                 "Access-Control-Allow-Origin": "*", // Required for CORS support to work
                 "Access-Control-Allow-Credentials": true, // Required for cookies, authorization headers with HTTPS
             },
-            data: userData,
+            data: {updatedValues},
             message: 'User updated sucessfully',
         };
     } else {

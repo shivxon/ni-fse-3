@@ -7,7 +7,9 @@ export const userUpdate = createAsyncThunk(
     "userUpdate",
     async (payload: any, thunkAPI: any) => {
         try {
-            const response: any = await axios.put(`${Env.baseUrl}/update/${payload.id}`, payload)
+            let id = payload.id
+            delete payload.id
+            const response: any = await axios.put(`${Env.baseUrl}/update/${id}`, payload)
             console.log('response', response)
             const data = response?.data;
             return data;

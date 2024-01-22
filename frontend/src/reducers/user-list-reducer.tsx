@@ -2,12 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios'
 import { Env } from '../enviornment/enviorment';
 
-//For Dev Apis
-
-// const baseUrl: any = 'https://xeccpcy808.execute-api.us-east-1.amazonaws.com/dev'
-
-//For Prod Apis
-const baseUrl: any = 'https://xeccpcy808.execute-api.us-east-1.amazonaws.com/prod'
 
 
 export const getUserList = createAsyncThunk(

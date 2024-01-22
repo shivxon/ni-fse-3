@@ -7,6 +7,7 @@ import UserList from './components/user/user-list';
 import { store } from './store/store';
 import { Provider } from 'react-redux'
 import UserDetails from './components/user/user-details';
+import EditUser from './components/user/edit-user';
 
 
 // const checkAuth = (userType: any) => {
@@ -22,7 +23,8 @@ function App() {
           <Routes>
             <Route path='/' element={<CreateUser />}></Route>
             <Route path='/list' element={<UserList />}></Route>
-            <Route path='/details/:id' element={<UserDetails />}></Route>
+            <Route path='/details' element={<UserDetails />}></Route>
+            <Route path='/edit' element={<EditUser />}></Route>
             <Route path="*" element={<NoPage />} />
           </Routes>
         </BrowserRouter>

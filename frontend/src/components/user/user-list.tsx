@@ -6,6 +6,7 @@ import { AppDispatch, RootState, useAppDispatch } from "../../store/store"
 import { getUserList } from "../../reducers/user-list-reducer";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { userDetails } from "../../reducers/user-details-reducer";
 
 
 
@@ -26,9 +27,14 @@ const UserList = () => {
   }, [dispatch, page]);
 
 
-  const handleNavigate = (id: string) => {
-    console.log('id', id)
-    navigate(`/details/${id}`)
+  const handleViewNavigate = (item: any) => {
+    dispatch(userDetails(item))
+    navigate(`/details`)
+  }
+  const handleEditNavigate = (item: any) => {
+    console.log('item', item)
+    dispatch(userDetails(item))
+    navigate(`/edit`)
   }
 
   return (
@@ -58,10 +64,10 @@ const UserList = () => {
                     <td>{item.firstName}</td>
                     <td>{item.lastName}</td>
                     <td>{item.phone}</td>
-                    <td style={{ display: 'flex', justifyContent: 'center' }} ><Button style={{ marginRight: '10px' }} variant="primary" type="button" onClick={() => handleNavigate(item?._id)}>
+                    <td style={{ display: 'flex', justifyContent: 'center' }} ><Button style={{ marginRight: '10px' }} variant="primary" type="button" onClick={() => handleViewNavigate(item)}>
                       View
                     </Button>
-                      <Button variant="secondary" type="button" onClick={() => handleNavigate(item?._id)}>
+                      <Button variant="secondary" type="button" onClick={() => handleEditNavigate(item)}>
                         Edit
                       </Button></td>
                   </tr>
@@ -73,7 +79,7 @@ const UserList = () => {
               </tbody>
             </table>
 
-            <div style={{display:'flex',justifyContent:'center'}}>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
               <PaginationControl page={page} setPage={setPage} totalPages={userList?.data?.length > 0 ? ((userList?.count - 1) / itemsPerPage + 1) : 0} />
             </div>
           </div>
