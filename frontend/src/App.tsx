@@ -8,6 +8,8 @@ import { store } from './store/store';
 import { Provider } from 'react-redux'
 import UserDetails from './components/user/user-details';
 import EditUser from './components/user/edit-user';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 // const checkAuth = (userType: any) => {
@@ -18,7 +20,7 @@ import EditUser from './components/user/edit-user';
 function App() {
   return (
     <>
- <Provider store={store}>
+      <Provider store={store}>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<CreateUser />}></Route>
@@ -28,7 +30,8 @@ function App() {
             <Route path="*" element={<NoPage />} />
           </Routes>
         </BrowserRouter>
-        </Provider>
+        <ToastContainer />
+      </Provider>
     </>
   );
 }

@@ -13,14 +13,12 @@ import { userDetails } from "../../reducers/user-details-reducer";
 
 
 const UserList = () => {
-  let active = 2;
   const itemsPerPage = 5
   const [page, setPage] = useState<number>(1);
   const navigate = useNavigate()
 
   const dispatch: AppDispatch = useAppDispatch();
   const userList: any = useSelector((state: RootState) => state.userList.list)
-  console.log('userList', userList)
 
   useEffect(() => {
     dispatch(getUserList({ page, limit: itemsPerPage }))
@@ -45,6 +43,7 @@ const UserList = () => {
 
     }}>
       <Card style={{ width: '100rem', height: '40rem', padding: '40px' }}>
+      <div style={{ display: 'flex', justifyContent: 'center' }}> <h4>User List</h4> </div>
         <div className="tableList">
           <div className="table-responsive">
             <table className="table table-bordered">

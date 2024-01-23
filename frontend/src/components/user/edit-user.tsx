@@ -8,6 +8,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import { createUser } from "../../reducers/user-create-reducer";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { AppDispatch, RootState, useAppDispatch } from "../../store/store"
 import { userUpdate } from "../../reducers/user-update.reducer";
 
@@ -26,7 +27,6 @@ const EditUser = () => {
 
 
     let userDetails: any = useSelector((state: RootState) => state.getUserDetails.details)
-    console.log('userDetails', userDetails)
     const { register, handleSubmit,
         formState: { errors },setValue }: any = useForm({
             resolver: yupResolver(validationSchema),
@@ -41,11 +41,13 @@ const EditUser = () => {
 
 
     async function onSubmit(data: any) {
-        console.log('data', data)
         let payload = { ...data, id: userDetails?.data?._id }
         dispatch(userUpdate(payload)).then((resp: any) => {
-            if (resp.statusCode = 200) {
+            if (resp.payload.statusCode == 200) {
+                toast.success(resp.payload.message, { autoClose: 3000 });
                 navigate('/list')
+            }else if (resp.payload.statusCode == 400) {
+                toast.error(resp.payload.message, { autoClose: 3000 ,});
             }
         })
     }
@@ -58,6 +60,7 @@ const EditUser = () => {
 
             }} >
                 <Card style={{ width: '40rem', height: '25rem', padding: '40px' }}>
+                <div style={{ display: 'flex', justifyContent: 'center' }}> <h4>Edit User</h4> </div>
                     <Form key={userDetails?.data?._id} >
                         <Form.Group className="mb-3" controlId="firstName">
                             <Form.Label>First Name</Form.Label>

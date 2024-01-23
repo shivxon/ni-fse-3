@@ -8,7 +8,6 @@ import Card from 'react-bootstrap/Card';
 const UserDetails = () => {
  
   const userDetails: any = useSelector((state: RootState) => state.getUserDetails.details)
-  console.log('userDetails', userDetails.data)
 
   return (<div style={{
     display: 'flex',

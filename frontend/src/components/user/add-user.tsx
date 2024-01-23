@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
+import { toast } from "react-toastify";
 import { AppDispatch, useAppDispatch } from "../../store/store"
 import { createUser } from "../../reducers/user-create-reducer";
 
@@ -13,13 +14,17 @@ const CreateUser = () => {
     const navigate = useNavigate()
 
     const validationSchema = Yup.object().shape({
-        firstName: Yup.string().required('firstName is required'),
+        firstName: Yup.string().required('First name is required')
+            .min(3, 'First name must be at least 3 characters')
+            .max(20, 'First name must not exceed 20 characters'),
         lastName: Yup.string()
-            .required('lastName is required')
-            .min(6, 'lastName must be at least 6 characters')
-            .max(20, 'lastName must not exceed 20 characters'),
+            .required('Last name is required')
+            .min(3, 'Last name must be at least 10 characters')
+            .max(20, 'Last name must not exceed 20 characters'),
         phone: Yup.string()
-            .required('phone is required')
+            .required('Phone is required')
+            .min(10, 'Phone must be at least 10 digits')
+            .max(10, 'Phone must not exceed 10 digits'),
     });
 
     const { register, handleSubmit,
@@ -29,10 +34,13 @@ const CreateUser = () => {
 
     const dispatch: AppDispatch = useAppDispatch();
     async function onSubmit(data: any) {
-        console.log('data', data)
         dispatch(createUser(data)).then((resp: any) => {
-            if (resp.statusCode = 200) {
+            if (resp.payload.statusCode == 200) {
+                toast.success(resp.payload.message, { autoClose: 3000 });
                 navigate('/list')
+            } else if (resp.payload.statusCode == 400) {
+                toast.error(resp.payload.message, { autoClose: 3000, });
+                navigate('/')
             }
         })
     }
@@ -45,6 +53,7 @@ const CreateUser = () => {
 
             }} >
                 <Card style={{ width: '40rem', height: '25rem', padding: '40px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}> <h4>Add User</h4> </div>
                     <Form >
                         <Form.Group className="mb-3" controlId="firstName">
                             <Form.Label>First Name</Form.Label>
