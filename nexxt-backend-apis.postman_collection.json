@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstName\": \"Ram\",\n    \"lastName\": \"ShaVasrma\",\n    \"phone\": \"8755540601\"\n}",
+					"raw": "{\n    \"firstName\": \"Shivam\",\n    \"lastName\": \"Vashishtha\",\n    \"phone\": \"8755540601\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -22,7 +22,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://xeccpcy808.execute-api.us-east-1.amazonaws.com/dev/creat-user",
+					"raw": "https://xeccpcy808.execute-api.us-east-1.amazonaws.com/dev/create-user",
 					"protocol": "https",
 					"host": [
 						"xeccpcy808",
@@ -33,7 +33,7 @@
 					],
 					"path": [
 						"dev",
-						"creat-user"
+						"create-user"
 					]
 				}
 			},
@@ -45,7 +45,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://xeccpcy808.execute-api.us-east-1.amazonaws.com/dev/user-details/65ab7e75e0e9ba5a4c269f3f",
+					"raw": "https://xeccpcy808.execute-api.us-east-1.amazonaws.com/dev/user-details/65afb7d3acb13a4451fe6a12",
 					"protocol": "https",
 					"host": [
 						"xeccpcy808",
@@ -57,7 +57,7 @@
 					"path": [
 						"dev",
 						"user-details",
-						"65ab7e75e0e9ba5a4c269f3f"
+						"65afb7d3acb13a4451fe6a12"
 					]
 				}
 			},
@@ -103,7 +103,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstName\": \"Ram\",\n    \"lastName\": \"ShaVasrma\",\n    \"phone\": \"8755540601\"\n}",
+					"raw": "{\n    \"firstName\": \"Shivam\",\n    \"lastName\": \"Vashishtha\",\n    \"phone\": \"8755540601\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -111,7 +111,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://xeccpcy808.execute-api.us-east-1.amazonaws.com/dev/update/65abc7e7625fbbf156a05a1b",
+					"raw": "https://xeccpcy808.execute-api.us-east-1.amazonaws.com/prod/update/65afb890acb13a4451fe6a16",
 					"protocol": "https",
 					"host": [
 						"xeccpcy808",
@@ -121,9 +121,9 @@
 						"com"
 					],
 					"path": [
-						"dev",
+						"prod",
 						"update",
-						"65abc7e7625fbbf156a05a1b"
+						"65afb890acb13a4451fe6a16"
 					]
 				}
 			},
