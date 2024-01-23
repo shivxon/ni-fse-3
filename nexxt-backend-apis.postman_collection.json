@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "95c4002b-fdfd-4302-940f-0eb3793c747b",
+		"name": "nexxt-backend-apis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26794013",
+		"_collection_link": "https://interstellar-escape-223908.postman.co/workspace/we-fund-us~e68a68ea-2639-45f3-9123-8d944aeaf3e0/collection/26794013-95c4002b-fdfd-4302-940f-0eb3793c747b?action=share&source=collection_link&creator=26794013"
+	},
+	"item": [
+		{
+			"name": "create-user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Ram\",\n    \"lastName\": \"ShaVasrma\",\n    \"phone\": \"8755540601\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://xeccpcy808.execute-api.us-east-1.amazonaws.com/dev/creat-user",
+					"protocol": "https",
+					"host": [
+						"xeccpcy808",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"creat-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://xeccpcy808.execute-api.us-east-1.amazonaws.com/dev/user-details/65ab7e75e0e9ba5a4c269f3f",
+					"protocol": "https",
+					"host": [
+						"xeccpcy808",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"user-details",
+						"65ab7e75e0e9ba5a4c269f3f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://xeccpcy808.execute-api.us-east-1.amazonaws.com/dev/list?page=1&limit=5",
+					"protocol": "https",
+					"host": [
+						"xeccpcy808",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"list"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-user",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Ram\",\n    \"lastName\": \"ShaVasrma\",\n    \"phone\": \"8755540601\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://xeccpcy808.execute-api.us-east-1.amazonaws.com/dev/update/65abc7e7625fbbf156a05a1b",
+					"protocol": "https",
+					"host": [
+						"xeccpcy808",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"update",
+						"65abc7e7625fbbf156a05a1b"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
