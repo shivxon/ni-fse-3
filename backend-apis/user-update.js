@@ -36,7 +36,7 @@ exports.handler = async (event, context) => {
                 "Access-Control-Allow-Origin": "*", // Required for CORS support to work
                 "Access-Control-Allow-Credentials": true, // Required for cookies, authorization headers with HTTPS
             },
-            data: {updatedValues},
+            data: {},
             message: 'User updated sucessfully',
         };
     } else {
