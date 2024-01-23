@@ -1,35 +1,19 @@
-import React from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route, Navigate, redirect } from "react-router-dom";
-import NoPage from './utils/Nopage';
-import CreateUser from './components/user/add-user';
-import UserList from './components/user/user-list';
+import { BrowserRouter as Router, } from "react-router-dom";
 import { store } from './store/store';
 import { Provider } from 'react-redux'
-import UserDetails from './components/user/user-details';
-import EditUser from './components/user/edit-user';
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-
-// const checkAuth = (userType: any) => {
-//   return isLoggedIn(userType);
-// }
+import AppRouter from './AppRouter';
 
 
 function App() {
   return (
     <>
       <Provider store={store}>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<CreateUser />}></Route>
-            <Route path='/list' element={<UserList />}></Route>
-            <Route path='/details' element={<UserDetails />}></Route>
-            <Route path='/edit' element={<EditUser />}></Route>
-            <Route path="*" element={<NoPage />} />
-          </Routes>
-        </BrowserRouter>
+        <Router>
+          <AppRouter />
+        </Router>
         <ToastContainer />
       </Provider>
     </>

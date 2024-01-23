@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
 import { useSelector } from "react-redux";
-import { AppDispatch, RootState, useAppDispatch } from "../../store/store"
+import { RootState } from "../../store/store"
 
 import Card from 'react-bootstrap/Card';
 

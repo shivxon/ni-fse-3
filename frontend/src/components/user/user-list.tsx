@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSearchParams, useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PaginationControl from "../../utils/Pagination/Pagination";
 import { useSelector } from "react-redux";
 import { AppDispatch, RootState, useAppDispatch } from "../../store/store"

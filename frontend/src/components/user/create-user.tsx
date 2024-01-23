@@ -11,15 +11,15 @@ import { AppDispatch, useAppDispatch } from "../../store/store"
 import { createUser } from "../../reducers/user-create-reducer";
 
 const CreateUser = () => {
+     
     const navigate = useNavigate()
-
     const validationSchema = Yup.object().shape({
         firstName: Yup.string().required('First name is required')
             .min(3, 'First name must be at least 3 characters')
             .max(20, 'First name must not exceed 20 characters'),
         lastName: Yup.string()
             .required('Last name is required')
-            .min(3, 'Last name must be at least 10 characters')
+            .min(3, 'Last name must be at least 3 characters')
             .max(20, 'Last name must not exceed 20 characters'),
         phone: Yup.string()
             .required('Phone is required')
@@ -66,7 +66,7 @@ const CreateUser = () => {
                                 error={errors.firstName ? 'true' : 'false'}
                             />
 
-                            <Form.Control.Feedback style={{ display: 'block' }} type="invalid">
+                            <Form.Control.Feedback style={{ display: 'block' }} className="firstNameError" type="invalid">
                                 {errors.firstName?.message}
                             </Form.Control.Feedback>
                         </Form.Group>
@@ -102,7 +102,7 @@ const CreateUser = () => {
                             </Form.Control.Feedback>
                         </Form.Group>
 
-                        <Button variant="primary" type="button" onClick={handleSubmit(onSubmit)}>
+                        <Button variant="primary" type="button" className="submitButton"  onClick={handleSubmit(onSubmit)}>
                             Submit
                         </Button>
                     </Form>
